@@ -19,6 +19,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+//Route::post('/sms', 'ReplyController@reminder');
+
 Route::post('/sms', 'ReplyController@reply');
 
-Route::post('/sms-original', 'ReplyController@replyOriginal');
+Route::post('/sms-reply-original', 'ReplyController@replyOriginal');

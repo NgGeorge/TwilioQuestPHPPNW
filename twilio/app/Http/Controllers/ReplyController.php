@@ -28,9 +28,7 @@ class ReplyController extends Controller
     //
     // This is a message reply with the state of the sender's phone number.
     public function replyOriginal(Request $request) {
-      $sid = 'ACc6998e678f0386f3375ae7ce6a9b064b';
-      $token = 'c19cb8d959855d6832e856ae08e6bd93';
-      $client = new Client($sid, $token);
+      $client = new Client(env('SID'), env('TOKEN'));
 
       $number = $request->input('From');
       $state = $request->input('FromState');
@@ -42,5 +40,9 @@ class ReplyController extends Controller
           'body' => 'Hi! It looks like your phone number was born in {{ '.$state.' }}',
         )
       );
+    }
+
+
+    public function reminder(Request $request) {
     }
 }
