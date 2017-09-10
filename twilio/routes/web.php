@@ -19,3 +19,10 @@ Route::get('/send', 'SendController@send');
 
 Route::get('/send-person', 'SendController@sendPerson');
 
+Route::get('/send-copilot', 'SendController@sendCopilot');
+
+Route::get('/send20', 'SendController@send20');
+
+Route::get('/deleteRecent', 'MessageController@deleteMostRecentMessage');
+
+Route::get('/dashboard', 'DashboardController@home');

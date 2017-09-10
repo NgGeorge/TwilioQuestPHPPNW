@@ -35,4 +35,48 @@ class SendController extends Controller
         )
       );
     }
+
+    // send sends a message through the Message Service with Copilot
+    public function sendCopilot() {
+      $client = new Client(env('SID'), env('TOKEN'));
+
+      $client->messages->create(
+        '+16268186733',
+        array(
+          'messagingServiceSid' => 'MGf440d12834ef1b336b3e670f4114dfa1',
+          'body' => 'This is a test message sent via Copilot',
+          'statusCallback' => "http://3f9f2145.ngrok.io/status",
+        )
+      );
+    }
+
+    public function send20() {
+       $client = new Client(env('SID'), env('TOKEN'));
+
+       // Because I'm lazy, for this challenge I'll just make 2 loops
+       for ($i = 0; $i < 10; $i++) {
+         $rand = rand(1, 1000);
+         $client->messages->create(
+          '+16264003807',
+          array(
+            'messagingServiceSid' => 'MGf440d12834ef1b336b3e670f4114dfa1',
+            'body' => 'I am the spam master :poop: '.$rand,
+            'statusCallback' => "http://3f9f2145.ngrok.io/status",
+          )
+        );
+       }
+
+       for ($j = 0; $j < 10; $j++) {
+         $rand = rand(1, 1000);
+         $client->messages->create(
+          '+16268186733',
+          array(
+            'messagingServiceSid' => 'MGf440d12834ef1b336b3e670f4114dfa1',
+            'body' => 'Hi George, I am the spam master '.$rand,
+            'statusCallback' => "http://3f9f2145.ngrok.io/status",
+          )
+        );
+       }
+
+    }
 }
